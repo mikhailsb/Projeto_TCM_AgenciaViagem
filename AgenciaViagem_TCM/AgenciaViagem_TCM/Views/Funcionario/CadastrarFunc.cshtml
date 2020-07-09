@@ -1,0 +1,50 @@
+﻿@model AppClasses.Funcionario
+
+@{
+    ViewBag.Title = "CadastrarFunc";
+    Layout = "~/Views/Shared/_LayoutLogado.cshtml";
+}
+
+<h2>Cadastrar Funcioário</h2>
+
+@using (Html.BeginForm("CadastrarFunc", "Funcionario", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+<fieldset>
+    <legend>Dados do Funcionário</legend>
+
+    <div class="editor-label">            @Html.LabelFor(f => f.NomeFuncioario)        </div>
+    <div class="editor-field">
+        @Html.EditorFor(f => f.NomeFuncioario)
+        @Html.ValidationMessageFor(f => f.NomeFuncioario)
+    </div>
+    <br />
+
+    <div class="editor-label">            @Html.LabelFor(f => f.Login)        </div>
+    <div class="editor-field">
+        @Html.EditorFor(f => f.Login)
+        @Html.ValidationMessageFor(f => f.Login)
+    </div>
+    <br />
+
+    <div class="editor-label">            @Html.LabelFor(f => f.SenhaFuncionario)        </div>
+    <div class="editor-field">
+        @Html.EditorFor(f => f.SenhaFuncionario)
+        @Html.ValidationMessageFor(f => f.SenhaFuncionario)
+    </div>
+    <br />
+
+    <div class="editor-label">            @Html.LabelFor(f => f.Cargo)        </div>
+    <div class="editor-field">
+        @Html.EditorFor(f => f.Cargo)
+        @Html.ValidationMessageFor(f => f.Cargo)
+    </div>
+    <br />
+
+    <div>
+        <input type="submit" value="Cadastrar" />
+    </div>
+
+</fieldset>
+}
