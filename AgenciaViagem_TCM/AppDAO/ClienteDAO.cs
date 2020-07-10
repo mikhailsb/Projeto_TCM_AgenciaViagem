@@ -63,7 +63,14 @@ namespace AppDAO
                 usuarios.Add(TempCliente);
             }
             return usuarios;
+        }
 
+        public void CadastrarEndereco(Endereco endereco, Cliente cliente)
+        {
+            string Inserir = string.Format("INSERT INTO endereco (id_cliente, cep, rua, num, bairro, cidade, uf) VALUE ({0},'{1}','{2}','{3}','{4}','{5}','{6}');", cliente.IdCliente, endereco.CEP, endereco.Rua, endereco.NumeroEnd, endereco.Bairro, endereco.Cidade, endereco.UF);
+            // INSERT INTO endereco (id_cliente, cep, rua, num, bairro, cidade, uf) VALUE ({0},'{1}','{2}','{3}','{4}','{5}','{6}');
+
+            DB.ExecutaComando(Inserir);
         }
     }
 }
