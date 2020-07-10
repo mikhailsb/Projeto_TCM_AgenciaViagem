@@ -70,7 +70,58 @@ namespace AppDAO
             string Inserir = string.Format("INSERT INTO endereco (id_cliente, cep, rua, num, bairro, cidade, uf) VALUE ({0},'{1}','{2}','{3}','{4}','{5}','{6}');", cliente.IdCliente, endereco.CEP, endereco.Rua, endereco.NumeroEnd, endereco.Bairro, endereco.Cidade, endereco.UF);
             // INSERT INTO endereco (id_cliente, cep, rua, num, bairro, cidade, uf) VALUE ({0},'{1}','{2}','{3}','{4}','{5}','{6}');
 
+            DB = new Banco();
+
             DB.ExecutaComando(Inserir);
+        }
+        public void AlterarEndereco(Endereco endereco, Cliente cliente)
+        {
+            string Alterar = string.Format("UPDATE endereco set cep = '{0}', rua = '{1}', num = '{2}', bairro = '{3}', cidade = '{4}', uf = '{5}' Where id_endereco = '{6}';", endereco.CEP, endereco.Rua, endereco.NumeroEnd, endereco.Bairro, endereco.Cidade, endereco.UF, endereco.IdEndereco);
+
+            DB = new Banco();
+
+            DB.ExecutaComando(Alterar);
+        }
+
+        public void RemoverEndereco(Endereco endereco, Cliente cliente)
+        {
+            string Remover = string.Format("DELETE FROM endereco WHERE id_endereco = '{0}' AND id_cliente = '{1}';", endereco.IdEndereco, cliente.IdCliente);
+
+            DB = new Banco();
+
+            DB.ExecutaComando(Remover);
+        }
+
+        public List<Endereco> ListarEndereco(Cliente cliente)
+        {
+            var db = new Banco();
+            var sqlQuery = string.Format("SELECT * FROM endereco WHERE id_cliente = {0};", cliente.IdCliente );
+            var retorno = db.RetornaComando(sqlQuery);
+
+            return ListaDeEndececoDecluente(retorno);
+        }
+
+        private List<Endereco> ListaDeEndececoDecluente(MySqlDataReader retorno)
+        {
+            var enderecos = new List<Endereco>();
+
+            while (retorno.Read())
+            {
+                var TempEnd = new Endereco()
+                {
+                    IdEndereco = ushort.Parse(retorno["id_endereco"].ToString()),
+                    CEP = retorno["cep"].ToString(),
+                    Rua = retorno["rua"].ToString(),
+                    NumeroEnd = ushort.Parse(retorno["num"].ToString()),
+                    Bairro = retorno["bairro"].ToString(),
+                    Cidade = retorno["cidade"].ToString(),
+                    UF = retorno["uf"].ToString()
+                };
+
+                enderecos.Add(TempEnd);
+            }
+            return enderecos;
         }
     }
 }
+
