@@ -8,7 +8,7 @@
 <h2>Funcionários</h2>
 
 @Html.ActionLink("Cadastrar", "CadastrarFunc", "Funcionario")
-
+<hr />
 
 <table class="table">
     <tr>
@@ -20,9 +20,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Login)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SenhaFuncionario)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Cargo)
@@ -41,9 +38,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Login)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SenhaFuncionario)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cargo)

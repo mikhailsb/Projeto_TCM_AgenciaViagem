@@ -212,11 +212,12 @@
     <Content Include="Views\Shared\_LayoutLogado.cshtml" />
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Funcionario\CadastrarFunc.cshtml" />
-    <Content Include="Views\Pacote\Index.cshtml" />
     <Content Include="Views\Funcionario\Index.cshtml" />
     <Content Include="Views\Funcionario\CadastrarFuncionario.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\CadastroCliente.cshtml" />
+    <Content Include="Views\Pacote\Index.cshtml" />
+    <Content Include="Views\Pacote\CriarPacotes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

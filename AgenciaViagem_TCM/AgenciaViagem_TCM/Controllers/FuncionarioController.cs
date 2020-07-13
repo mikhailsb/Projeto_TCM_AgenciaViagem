@@ -38,7 +38,8 @@ namespace AgenciaViagem_TCM.Controllers
             //return RedirectToAction();
 
 
-            return View();
+            //return View();
+            return RedirectToAction("Index");
         }
 
 

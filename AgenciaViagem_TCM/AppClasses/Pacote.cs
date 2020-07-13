@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AgenciaViagem_TCM.Models
+namespace AppClasses
 {
     public class Pacote
     {
         public ushort IdPacote { get; set; }
-        public byte QuantidadeDiarias { get; set; }
-        public byte QuantidadeQuartos { get; set; }
         public DateTime DataCheckin { get; set; }
         public DateTime DataCheckout { get; set; }
         public string Origem { get; set; }
         public string Destino { get; set; }
-        public byte NumeroAdultos { get; set; }
-        public byte NumeroCriancas { get; set; }
         public string TipoTransporte { get; set; }
         public decimal ValorUnitario { get; set; }
         public string DescricaoPacote { get; set; }

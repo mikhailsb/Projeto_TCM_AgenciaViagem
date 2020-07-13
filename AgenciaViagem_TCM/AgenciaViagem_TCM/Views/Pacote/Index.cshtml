@@ -1,8 +1,92 @@
-﻿
+﻿@model IEnumerable<AppClasses.Pacote>
+
 @{
-    ViewBag.Title = "Pacotes";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
 
-    <h2>@ViewBag.Title</h2>
+<h2>Pacotes</h2>
 
+@Html.ActionLink("Cadastrar", "CriarPacotes", "Pacote")
+<hr />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPacote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCheckin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCheckout)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Origem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoTransporte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorUnitario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescricaoPacote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResumoPacote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoteiroViagem)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPacote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCheckin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCheckout)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Origem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destino)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoTransporte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorUnitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoPacote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResumoPacote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoteiroViagem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
