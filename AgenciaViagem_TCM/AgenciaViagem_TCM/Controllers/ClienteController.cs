@@ -17,8 +17,6 @@ namespace AgenciaViagem_TCM.Controllers
 
             var clie = listaCliente.Listar();
 
-
-
             return View(clie);
         }
         public ActionResult CadastroCliente()
@@ -29,7 +27,24 @@ namespace AgenciaViagem_TCM.Controllers
         [HttpPost]
         public ActionResult CadastroCliente(Cliente cliente)
         {
-            return View();
+            ClienteDAO InserirClie = new ClienteDAO();
+
+            InserirClie.Insert(cliente);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ValidaEmail(Cliente cliente)
+        {
+            ClienteDAO validar = new ClienteDAO();
+
+            bool resultado = validar.ValidaEmail(cliente.Email);
+
+            if (resultado == true)
+            {
+                return Json(string.Format("E-mail {0} já está cadastrado.", cliente.Email), JsonRequestBehavior.AllowGet);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }

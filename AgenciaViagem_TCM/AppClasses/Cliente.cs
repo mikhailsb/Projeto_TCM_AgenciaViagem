@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace AppClasses
 {
@@ -10,11 +11,12 @@ namespace AppClasses
     {
         public ushort IdCliente { get; set; }
         [Display(Name = "Nome do Cliente:")]
-        [Required(ErrorMessage ="Nome do cliente é um campo obrigatório.")]
+        [Required(ErrorMessage = "Nome do cliente é um campo obrigatório.")]
         public string NomeCliente { get; set; }
         [Display(Name = "E-mail:")]
         [Required(ErrorMessage = "E-mail é um campo obrigatório.")]
-        [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*\s+<(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})>$|^(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})$", ErrorMessage ="Informe um e-mail válido")]
+        [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*\s+<(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})>$|^(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})$", ErrorMessage = "Informe um e-mail válido")]
+        [Remote("ValidaEmail", "Cliente", ErrorMessage = "Email já cadastrado!")]
         public string Email { get; set; }
         //public string SenhaCliente { get; set; }
         [Display(Name ="CPF: ")]

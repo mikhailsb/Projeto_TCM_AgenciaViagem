@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace AppClasses
 {
@@ -15,6 +16,7 @@ namespace AppClasses
 
         [Required(ErrorMessage = "Login do funcionário é obrigatório.")]
         [StringLength(15, MinimumLength = 5, ErrorMessage = "O campo deve conter mais de 5 caracteres.")]
+        [Remote("ValidaLogin", "Funcionario", ErrorMessage = "Login já cadastrado!")]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Senha é um campo obrigatório.")]
@@ -22,18 +24,6 @@ namespace AppClasses
         public string SenhaFuncionario { get; set; }
 
         public string Cargo { get; set; }
-
-        public void CadastrarFuncionario()
-        { }
-
-        public void ConsultaCliente()
-        { }
-
-        public void CadastrarPacote()
-        { }
-
-        public void ConsultaPacote()
-        { }
 
         /*
             * Funcionario

@@ -122,6 +122,21 @@ namespace AppDAO
             }
             return enderecos;
         }
+
+        public Boolean ValidaEmail(string email)
+        {
+            bool vlEmail = false;
+
+            var db = new Banco();
+            var sqlQuery = string.Format("SELECT email FROM cliente WHERE email = '{0}';", email);
+            var retorno = db.RetornaComando(sqlQuery);
+
+            if (retorno.Read() == true)
+            {
+                return vlEmail = true;
+            }
+            return vlEmail;
+        }
     }
 }
 

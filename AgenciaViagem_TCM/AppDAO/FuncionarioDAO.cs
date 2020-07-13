@@ -76,12 +76,12 @@ namespace AppDAO
             return funcionarios;
         }
 
-        public Boolean ValidaLogin()
+        public Boolean ValidaLogin(string login)
         {
             bool vlLogin = false;
 
             var db = new Banco();
-            var sqlQuery = "SELECT login FROM funcionario";
+            var sqlQuery = string.Format("SELECT login FROM funcionario WHERE login = '{0}'", login);
             var retorno = db.RetornaComando(sqlQuery);
 
             if(retorno.Read() == true)
@@ -89,7 +89,6 @@ namespace AppDAO
                 return vlLogin = true;
             }
             return vlLogin;
-
         }
     }
 }

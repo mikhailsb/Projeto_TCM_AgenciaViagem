@@ -42,6 +42,19 @@ namespace AgenciaViagem_TCM.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ValidaLogin(Funcionario funcionario)
+        {
+            FuncionarioDAO validar = new FuncionarioDAO();
+
+            bool resultado = validar.ValidaLogin(funcionario.Login);
+
+            if(resultado == true)
+            {
+                return Json(string.Format("Login {0} já está cadastrado.", funcionario.Login), JsonRequestBehavior.AllowGet);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }
