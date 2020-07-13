@@ -74,6 +74,21 @@ namespace AppDAO
                 funcionarios.Add(TempFuncionarios);
             }
             return funcionarios;
+        }
+
+        public Boolean ValidaLogin()
+        {
+            bool vlLogin = false;
+
+            var db = new Banco();
+            var sqlQuery = "SELECT login FROM funcionario";
+            var retorno = db.RetornaComando(sqlQuery);
+
+            if(retorno.Read() == true)
+            {
+                return vlLogin = true;
+            }
+            return vlLogin;
 
         }
     }

@@ -14,7 +14,7 @@ namespace AppClasses
         public string NomeFuncioario { get; set; }
 
         [Required(ErrorMessage = "Login do funcionário é obrigatório.")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter mais de 5 caracteres.")]
+        [StringLength(15, MinimumLength = 5, ErrorMessage = "O campo deve conter mais de 5 caracteres.")]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Senha é um campo obrigatório.")]
