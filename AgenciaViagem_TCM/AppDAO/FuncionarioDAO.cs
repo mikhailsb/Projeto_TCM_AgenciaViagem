@@ -29,12 +29,21 @@ namespace AppDAO
         {
             // Query para atualizar os dados do Funcionário
             // o campo de Login não está incluso para alteração. A alteração de login é uma falha de segurança.
-            string Atualizar = string.Format("UPDATE funcionario set nome_func = '{0}', senha_func = '{1}', cargo_func = '{2}' Where id_func = '{3}';", Func.NomeFuncioario, Func.SenhaFuncionario, Func.SenhaFuncionario, Func.Cargo, Func.IdFuncionario);
+            string Atualizar = string.Format("UPDATE funcionario set nome_func = '{0}', cargo_func = '{1}' Where id_func = '{2}';", Func.NomeFuncioario, Func.Cargo, Func.IdFuncionario);
 
             // chama a classe Banco de dados na DLL AppBanco 
             DB = new Banco();
 
             DB.ExecutaComando(Atualizar);
+        }
+        public Funcionario BuscaID(ushort ID)
+        {
+            string busca = string.Format("SELECT * FROM funcionario WHERE id_func = '{0}';", ID);
+            DB = new Banco();
+
+            var x= ListaDeFuncionario(DB.RetornaComando(busca));
+
+            return x[0];
         }
 
         public void Remover(Funcionario Func)

@@ -8,7 +8,7 @@
 <h2>Funcionários</h2>
 
 @Html.ActionLink("Cadastrar", "CadastrarFunc", "Funcionario")
-<hr />
+<br />
 
 <table class="table">
     <tr>
@@ -43,9 +43,8 @@
                 @Html.DisplayFor(modelItem => item.Cargo)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Editar", "Editar", new {IDFunc=item.IdFuncionario}) |
+                @Html.ActionLink("Delete", "Delete", new {IDFunc=item.IdFuncionario})
             </td>
         </tr>
     }

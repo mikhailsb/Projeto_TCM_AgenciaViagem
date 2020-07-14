@@ -42,6 +42,24 @@ namespace AgenciaViagem_TCM.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Delete(ushort IDFunc)
+        {
+            FuncionarioDAO buscaId = new FuncionarioDAO();
+
+            return View(buscaId.BuscaID(IDFunc));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Funcionario funcionario)
+        {
+            FuncionarioDAO removeFunc = new FuncionarioDAO();
+
+            removeFunc.Remover(funcionario);
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult ValidaLogin(Funcionario funcionario)
         {
             FuncionarioDAO validar = new FuncionarioDAO();
@@ -53,6 +71,22 @@ namespace AgenciaViagem_TCM.Controllers
                 return Json(string.Format("Login {0} já está cadastrado.", funcionario.Login), JsonRequestBehavior.AllowGet);
             }
             return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Editar(ushort IDFunc)
+        {
+            FuncionarioDAO buscaId = new FuncionarioDAO();
+
+            return View(buscaId.BuscaID(IDFunc));
+        }
+        [HttpPost]
+        public ActionResult Editar(Funcionario funcionario)
+        {
+            FuncionarioDAO AtualizarFunc = new FuncionarioDAO();
+
+            AtualizarFunc.Atualizar(funcionario);
+
+            return RedirectToAction("Index");
         }
 
 
