@@ -46,5 +46,37 @@ namespace AgenciaViagem_TCM.Controllers
             }
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Editar(ushort IDClie)
+        {
+            ClienteDAO buscaId = new ClienteDAO();
+
+            return View(buscaId.BuscaID(IDClie));
+        }
+        [HttpPost]
+        public ActionResult Editar(Cliente cliente)
+        {
+            ClienteDAO AtualizarCliente = new ClienteDAO();
+
+            AtualizarCliente.Atualizar(cliente);
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(ushort IDClie)
+        {
+            ClienteDAO buscaId = new ClienteDAO();
+
+            return View(buscaId.BuscaID(IDClie));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Cliente cliente)
+        {
+            ClienteDAO removeClie = new ClienteDAO();
+
+            removeClie.Remover(cliente);
+
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -220,6 +220,8 @@
     <Content Include="Views\Funcionario\CadastrarFunc.cshtml" />
     <Content Include="Views\Funcionario\Delete.cshtml" />
     <Content Include="Views\Funcionario\Editar.cshtml" />
+    <Content Include="Views\Cliente\Editar.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

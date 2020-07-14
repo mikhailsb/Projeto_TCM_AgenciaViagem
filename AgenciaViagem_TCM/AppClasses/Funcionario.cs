@@ -9,8 +9,10 @@ namespace AppClasses
 {
     public class Funcionario
     {
+        [Display(Name = "ID Funcionário")]
         public ushort IdFuncionario { get; set; }
 
+        [Display(Name = "Nome Funcionário")]
         [Required(ErrorMessage = "Nome do funcionário é o brigatório.")]
         public string NomeFuncioario { get; set; }
 

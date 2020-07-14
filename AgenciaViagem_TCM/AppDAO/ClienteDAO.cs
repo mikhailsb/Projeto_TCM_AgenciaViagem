@@ -31,8 +31,11 @@ namespace AppDAO
 
         public void Remover(Cliente cliente)
         {
-
             string remover = string.Format("DELETE FROM cliente WHERE id_cliente = '{0}';", cliente.IdCliente);
+
+            DB = new Banco();
+
+            DB.ExecutaComando(remover);
         }
 
         public List<Cliente> Listar()
@@ -136,6 +139,16 @@ namespace AppDAO
                 return vlEmail = true;
             }
             return vlEmail;
+        }
+
+        public Cliente BuscaID(ushort ID)
+        {
+            string busca = string.Format("SELECT * FROM cliente WHERE id_cliente = '{0}';", ID);
+            DB = new Banco();
+
+            var x = ListaDeCliente(DB.RetornaComando(busca));
+
+            return x[0];
         }
     }
 }

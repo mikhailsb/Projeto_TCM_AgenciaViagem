@@ -16,7 +16,7 @@ namespace AppClasses
         [Display(Name = "E-mail:")]
         [Required(ErrorMessage = "E-mail é um campo obrigatório.")]
         [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*\s+<(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})>$|^(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})$", ErrorMessage = "Informe um e-mail válido")]
-        [Remote("ValidaEmail", "Cliente", ErrorMessage = "Email já cadastrado!")]
+        //[Remote("ValidaEmail", "Cliente", ErrorMessage = "Email já cadastrado!")]
         public string Email { get; set; }
         //public string SenhaCliente { get; set; }
         [Display(Name ="CPF: ")]
