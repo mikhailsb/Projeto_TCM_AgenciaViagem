@@ -17,8 +17,7 @@ namespace AppDAO
         {
             // Query de cadastro do Pacotes
             string Inserir = string.Format
-                ("INSERT INTO pacote (data_ida, data_volta, origem, destino, tipo_trasporte, valor_unitario, descricao_pacote, resumo_pacote, roteiro_viagem)" +
-                " VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}');", pacote.DataCheckin, pacote.DataCheckout, pacote.Origem, pacote.Destino, pacote.TipoTransporte, pacote.ValorUnitario, pacote.DescricaoPacote, pacote.ResumoPacote, pacote.RoteiroViagem);
+                ("CALL p_ins_pacote('{0}', '{1}','{2}', '{3}', '{4}', {5}, '{6}','{7}','{8}');", pacote.DataCheckin.ToString("yyyy'-'MM'-'dd"), pacote.DataCheckout.ToString("yyyy'-'MM'-'dd"), pacote.Origem, pacote.Destino, pacote.TipoTransporte, pacote.ValorUnitario.ToString().Replace(",", "."), pacote.DescricaoPacote, pacote.ResumoPacote, pacote.RoteiroViagem);
 
             // instacia a classe Banco de dados na DLL AppBanco 
             DB = new Banco();
@@ -30,8 +29,8 @@ namespace AppDAO
         {
             // Query para atualizar os dados do Funcionário
             // o campo de Login não está incluso para alteração. A alteração de login é uma falha de segurança.
-            string Atualizar = string.Format("UPDATE pacote set data_ida = {0}, data_volta = {1}, origem = {2}, destino = {3}, tipo_trasporte = {4}, valor_unitario = {5}, descricao_pacote = {6}, resumo_pacote = {7}, roteiro_viage = {8}';", pacote.DataCheckin, pacote.DataCheckout, pacote.Origem, pacote.Destino, pacote.TipoTransporte, pacote.ValorUnitario, pacote.DescricaoPacote, pacote.ResumoPacote, pacote.RoteiroViagem);
-            
+            string Atualizar = string.Format("UPDATE pacote set data_ida = '{0}', data_volta = '{1}', origem = '{2}', destino = '{3}', tipo_transporte = '{4}', valor_unitario = {5}, descricao_pacote = '{6}', resumo_pacote = '{7}', roteiro_viagem = '{8}' WHERE id_pacote = '{9}';", pacote.DataCheckin.ToString("yyyy'-'MM'-'dd"), pacote.DataCheckout.ToString("yyyy'-'MM'-'dd"), pacote.Origem, pacote.Destino, pacote.TipoTransporte, pacote.ValorUnitario.ToString().Replace(",", "."), pacote.DescricaoPacote, pacote.ResumoPacote, pacote.RoteiroViagem, pacote.IdPacote);
+
             // chama a classe Banco de dados na DLL AppBanco 
             DB = new Banco();
 
@@ -80,6 +79,16 @@ namespace AppDAO
                 pacotes.Add(TempPacote);
             }
             return pacotes;
+        }
+
+        public Pacote BuscaID(ushort ID)
+        {
+            string busca = string.Format("SELECT * FROM pacote WHERE id_pacote = '{0}';", ID);
+            DB = new Banco();
+
+            var x = ListaDePacotes(DB.RetornaComando(busca));
+
+            return x[0];
         }
     }
 }

@@ -1,0 +1,104 @@
+﻿@model AppClasses.Pacote
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutLogado.cshtml";
+}
+<center>
+    <h2><b> EXCLUIR </b></h2>
+</center>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.IdPacote)
+        </dt>
+        <dd>
+            &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.IdPacote)
+        </dd>
+
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.DataCheckin)
+        </dt>
+        <dd>
+            &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.DataCheckin)
+        </dd>
+
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.DataCheckout)
+        </dt>
+        <dd>
+            &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.DataCheckout)
+        </dd>
+
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.Origem)
+        </dt>
+        <dd>
+            &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.Origem)
+        </dd>
+
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.Destino)
+        </dt>
+        <dd>
+            &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.Destino)
+        </dd>
+
+        <dt class="col-lg-offset-4"> 
+            @Html.DisplayNameFor(model => model.TipoTransporte)
+        </dt>
+        <dd>
+            &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.TipoTransporte)
+        </dd>
+
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.ValorUnitario)
+        </dt>
+        <dd>
+            &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.ValorUnitario)
+        </dd>
+
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.DescricaoPacote)
+        </dt>
+        <dd id="textoExcluir">
+            @Html.DisplayFor(model => model.DescricaoPacote)
+        </dd>
+
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.ResumoPacote)
+        </dt>
+        <dd id="textoExcluir">
+            @Html.DisplayFor(model => model.ResumoPacote)
+        </dd>
+
+        <dt class="col-lg-offset-4">
+            @Html.DisplayNameFor(model => model.RoteiroViagem)
+        </dt>
+        <dd id="textoExcluir">
+            @Html.DisplayFor(model => model.RoteiroViagem)
+        </dd>
+
+    </dl>
+    <br />
+    <center>
+        <h3>TEM CERTEZA QUE DESEJA EXCLUIR?</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.IdPacote)
+            <div class="form-actions no-color">
+                <input type="submit" value="EXCLUIR" class="btn btn-danger" />
+                <hr />
+                <div>
+                    <center>
+                        <a href="~/Pacote">
+                            <input type="button" value="LISTAR PACOTES" class="btn btn-info" />
+                        </a>
+                    </center>
+                </div>
+            </div>
+        }
+    </center>
+</div>

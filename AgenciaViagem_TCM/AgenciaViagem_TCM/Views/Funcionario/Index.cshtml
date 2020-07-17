@@ -1,52 +1,83 @@
 ﻿@model IEnumerable<AppClasses.Funcionario>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "LISTAGEM DE FUNCIONÁRIOS";
     Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
+<center>
+    <h2><b> FUNCIONÁRIOS </b></h2>
+</center>
+<div id="divTelaCheia">
+    <hr />
 
-<h2>Funcionários</h2>
-
-@Html.ActionLink("Cadastrar", "CadastrarFunc", "Funcionario")
-<br />
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdFuncionario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeFuncioario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Login)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cargo)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdFuncionario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeFuncioario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Login)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cargo)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new {IDFunc=item.IdFuncionario}) |
-                @Html.ActionLink("Delete", "Delete", new {IDFunc=item.IdFuncionario})
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.IdFuncionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeFuncioario)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdFuncionario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeFuncioario)
+                </td>
+                <td>
+                    <input type="button" value="DETALHES" class="btn btn-danger" data-toggle="modal" data-target="#modalDetalhes" />
+                </td>
+            </tr>
+        }
+
+        @foreach (var item in Model)
+        {
+            <div class="modal fade" id="modalDetalhes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="FECHAR">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h3 class="modal-title" id="exampleModalLabel">
+                                <center>
+                                    <b> DETALHES DO FUNCIONÁRIO </b>
+                                </center>
+                            </h3>
+                        </div>
+                        <div class="modal-body">
+                            <b>@Html.DisplayNameFor(model => model.Login)</b>
+                            <br />
+                            @Html.DisplayFor(modelItem => item.Login)
+                            <br />
+                            <hr />
+                            <b>@Html.DisplayNameFor(model => model.Cargo)</b>
+                            <br />
+                            @Html.DisplayFor(modelItem => item.Cargo)
+                            <br />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary">ALTERAR</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">FECHAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </table>
+    <div>
+        <center>
+            <div class="col-md-offset-2 col-md-8">
+                <a href="~/Funcionario/CadastrarFunc">
+                    <input type="button" value="CADASTRAR FUNCIONÁRIOS" class="btn btn-info" />
+                </a>
+            </div>
+        </center>
+    </div>
+</div>

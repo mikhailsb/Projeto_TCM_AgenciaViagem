@@ -14,6 +14,11 @@ namespace AgenciaViagem_TCM
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            // jQuery de Mascaras
+            bundles.Add(new ScriptBundle("~/bundles/mascaras").Include(
+                "~/Scripts/Mascaras/jquery.mask.js",
+                "~/Scripts/Mascaras/Mascaras.js"
+                ));
             // Use a versão em desenvolvimento do Modernizr para desenvolver e aprender. Em seguida, quando estiver
             // pronto para a produção, utilize a ferramenta de build em https://modernizr.com para escolher somente os testes que precisa.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

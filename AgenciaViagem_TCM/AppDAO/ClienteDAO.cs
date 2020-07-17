@@ -15,7 +15,7 @@ namespace AppDAO
 
         public void Insert(Cliente cliente)
         {
-            string Inserir = string.Format("INSERT INTO cliente (nome_cliente, email, cpf, rg, telefone) Values('{0}', '{1}', '{2}', '{3}', '{4}');", cliente.NomeCliente, cliente.Email, cliente.CPF, cliente.RG, cliente.Telefone);
+            string Inserir = string.Format("CALL p_ins_cliente('{0}', '{1}', '{2}', '{3}', '{4}');", cliente.NomeCliente, cliente.Email, cliente.CPF, cliente.RG, cliente.Telefone);
 
             DB.ExecutaComando(Inserir);
         }

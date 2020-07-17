@@ -3,38 +3,42 @@
     ViewBag.Title = "Login";
 }
 
-<div class="jumbotron text-center">
+<br />
+<hr />
 
-    <div class="row">
-        <div class="col-sm-12">
-            <img src="~/Imagens/logo_AgenciaViagens.png" />
+<center>
+    <div id="divTelaCheia">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="~/Imagens/logo_AgenciaViagens.png" />
+            </div>
         </div>
+        <form name="frmusuario" method="post">
+            <div class="row">
+                <div>
+                    <br />
+                    <p class="glyphicon glyphicon-user"> USUÁRIO</p>
+                </div>
+                <div class="col-4">
+                    <input type="text" value="" name="Login" />
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div>
+                    <p class="glyphicon glyphicon-lock"> SENHA</p>
+                </div>
+                <div class="col-4">
+                    <input type="text" value="" name="Senha" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="glyphicon glyphicon-log-in alert-info col-4">
+                    <input type="submit" value="ENTRAR" id="botaoEntrar" />
+                </div>
+            </div>
+        </form>
     </div>
-
-    <div class="row">
-        <div class="col-sm-5">
-            <p>Login: </p>
-        </div>
-        <div class="col-sm-4">
-            <input type="text" value="" name="Login" />
-        </div>
-    </div>
-
-    <br />
-    <div class="row">
-        <div class="col-sm-5">
-            <p>Senha:</p>
-        </div>
-        <div class="col-sm-4">
-            <input type="text" value="" name="Senha" />
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-sm-8">
-            <input type="submit" value="Logar" />
-        </div>
-    </div>
-
-</div>
-
+</center>

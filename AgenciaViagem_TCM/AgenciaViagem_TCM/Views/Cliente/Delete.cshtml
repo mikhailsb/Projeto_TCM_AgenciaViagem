@@ -4,69 +4,75 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
+<div id="divTelaCheia">
+    <center>
+        <h2><b>EXCLUIR</b></h2>
+    </center>
+    <div>
+        <hr />
 
-    <h2>Remover Cliente</h2>
+        <dl class="dl-horizontal col-md-12">
+            <dt class="col-md-offset-4">
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </dt>
+            <dd>
+                &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.IdCliente)
+            </dd>
 
-<h3>Tem certeza de que deseja excluir isso @Html.DisplayFor(model => model.NomeCliente)?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdCliente)
-        </dt>
+            <dt class="col-lg-offset-4">
+                @Html.DisplayNameFor(model => model.NomeCliente)
+            </dt>
+            <dd>
+                &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.NomeCliente)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdCliente)
-        </dd>
+            <dt class="col-lg-offset-4">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeCliente)
-        </dt>
+            <dt class="col-lg-offset-4">
+                @Html.DisplayNameFor(model => model.CPF)
+            </dt>
+            <dd>
+                &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.CPF)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomeCliente)
-        </dd>
+            <dt class="col-lg-offset-4">
+                @Html.DisplayNameFor(model => model.RG)
+            </dt>
+            <dd>
+                &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.RG)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CPF)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CPF)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RG)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(model => model.IdCliente)
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar a Clientes", "Index")
-        </div>
-    }
+            <dt class="col-lg-offset-4">
+                @Html.DisplayNameFor(model => model.Telefone)
+            </dt>
+            <dd>
+                &nbsp; &nbsp; &nbsp; @Html.DisplayFor(model => model.Telefone)
+            </dd>
+            <br />
+        </dl>
+        <center>
+            <h3>TEM CERTEZA QUE DESEJA EXCLUIR?</h3>
+            @using (Html.BeginForm())
+             {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.IdCliente)
+                <div class="form-actions no-color">
+                    <input type="submit" value="EXCLUIR" class="btn btn-danger" />
+                    <hr />
+                    <div>
+                        <center>
+                            <a href="~/Cliente">
+                                <input type="button" value="LISTAR CLIENTES" class="btn btn-info" />
+                            </a>
+                        </center>
+                    </div>
+                </div>
+             }
+        <center>
+    </div>
 </div>

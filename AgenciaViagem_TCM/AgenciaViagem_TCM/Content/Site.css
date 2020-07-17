@@ -1,4 +1,6 @@
-﻿body {
+﻿
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -21,4 +23,65 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#botaoEntrar {
+    height: 30px;
+    width: auto;
+}
+
+#divTelaCheia {
+    height: 415px;
+}
+
+#imgHome {
+    height: 20px;
+}
+
+#telaCheia {
+}
+
+body {
+    background-color: rgba(8, 80, 255, 0.25);
+}
+
+#imagensRodape {
+    height: 20px;
+}
+
+.rounded {
+    height: 150px;
+}
+
+.botaoAlterar {
+    background-color: rgba(255, 106, 0, 0.70);
+    color: #FFFFFF;
+    text-decoration: none;
+    display: inline-block
+}
+
+#botaoDetalhes {
+    background-color: rgba(76, 255, 0, 0.63);
+    color: #FFFFFF;
+}
+
+.botaoDeletar {
+    background-color: rgba(255, 0, 0, 0.63);
+}
+
+.tab:any-link {
+    text-decoration: none;
+    color: white;
+}
+
+.alteraId{
+    readonly;
+}
+
+#botaoPrincipal {
+    width: 225px;
+}
+
+#textoExcluir {
+    margin-left: 560px;
 }

@@ -181,6 +181,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\Amazonia.jpg" />
     <Content Include="Imagens\logo_AgenciaViagens.png" />
+    <Content Include="Imagens\pacote.png" />
     <Content Include="Imagens\Pantanal.jpg" />
     <Content Include="Imagens\Trancoso.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -195,6 +196,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Mascaras\jquery.mask.js" />
     <Content Include="Scripts\Mascaras\Mascaras.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
@@ -222,6 +224,10 @@
     <Content Include="Views\Funcionario\Editar.cshtml" />
     <Content Include="Views\Cliente\Editar.cshtml" />
     <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Pacote\Editar.cshtml" />
+    <Content Include="Views\Pacote\Delete.cshtml" />
+    <Content Include="Views\Cliente\Detalhes.cshtml" />
+    <Content Include="Views\Pacote\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

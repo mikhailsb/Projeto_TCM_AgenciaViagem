@@ -4,6 +4,55 @@
     Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
 
-<h2>Principal</h2>
-
-<h3>Dashbord Com insformações de pacotes, vendas, Funcionarios ...</h3>
+<div id="divTelaCheia">
+    <center>
+        <h2><b> ESCOLHA UMA OPERAÇÃO </b></h2>
+        <hr />
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <img src="~/Imagens/pacote.png" />
+                <a href="~/Cliente/CadastroCliente">
+                    <input type="button" value="CADASTRAR CLIENTES" class="btn btn-info" id="botaoPrincipal" />
+                </a>
+                <hr />
+            </div>
+            <div class="col-lg-4">
+                <img src="~/Imagens/pacote.png" />
+                <a href="~/Pacote/CriarPacotes">
+                    <input type="button" value="CADASTRAR PACOTES" class="btn btn-info" id="botaoPrincipal" />
+                </a>
+                <hr />
+            </div>
+            <div class="col-lg-4">
+                <img src="~/Imagens/pacote.png" />
+                <a href="~/Funcionario/CadastrarFunc">
+                    <input type="button" value="CADASTRAR FUNCIONÁRIOS" class="btn btn-info" id="botaoPrincipal" />
+                </a>
+                <hr />
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <img src="~/Imagens/pacote.png" />
+                <a href="~/Cliente">
+                    <input type="button" value="LISTAR CLIENTES" class="btn btn-info" id="botaoPrincipal" />
+                </a>
+                <hr />
+            </div>
+            <div class="col-lg-4">
+                <img src="~/Imagens/pacote.png" />
+                <a href="~/Pacote">
+                    <input type="button" value="LISTAR PACOTES" class="btn btn-info" id="botaoPrincipal" />
+                </a>
+                <hr />
+            </div>
+            <div class="col-lg-4">
+                <img src="~/Imagens/pacote.png" />
+                <a href="~/Funcionario">
+                    <input type="button" value="LISTAR FUNCIONÁRIOS" class="btn btn-info" id="botaoPrincipal" />
+                </a>
+                <hr />
+            </div>
+        </div>
+    </center>
+</div>

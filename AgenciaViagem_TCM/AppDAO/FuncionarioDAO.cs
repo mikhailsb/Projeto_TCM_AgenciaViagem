@@ -16,7 +16,7 @@ namespace AppDAO
         public void Inserir(Funcionario Func)
         {
             // Query de cadastro do Funcionário
-            string Inserir = string.Format("INSERT INTO funcionario (nome_func, login, senha_func, cargo_func) VALUES ('{0}', '{1}', '{2}', '{3}');", Func.NomeFuncioario, Func.Login, Func.SenhaFuncionario, Func.Cargo);
+            string Inserir = string.Format("CALL p_ins_funcionario('{0}', '{1}', '{2}', '{3}');", Func.NomeFuncioario, Func.Login, Func.SenhaFuncionario, Func.Cargo);
             //INSERT INTO funcionario (nome_func, login, senha_func, cargo_func) VALUES (null,'Samuel Felix', 'func69', 'senhanadasujestiva', 'Auxiliar');
 
             // chama a classe Banco de dados na DLL AppBanco 

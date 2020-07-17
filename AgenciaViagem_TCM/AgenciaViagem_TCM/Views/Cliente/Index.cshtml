@@ -1,65 +1,162 @@
 ﻿@model IEnumerable<AppClasses.Cliente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "LISTAGEM DE CLIENTES";
     Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
-
-<h2>@ViewBag.Title</h2>
-
-@Html.ActionLink("Cadastros", "CadastroCliente", "Cliente")
-<hr>
-<br />
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdCliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeCliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CPF)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<center>
+    <h2><b> CLIENTES </b></h2>
+</center>
+<div id="divTelaCheia">
+    <hr/>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CPF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { IDClie=item.IdCliente }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { IDClie=item.IdCliente })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCliente)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CPF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RG)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>*@
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCliente)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CPF)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone)
+                    </td>*@
+                <td>
+                    @* <input type="button" value="DETALHES" class="btn btn-default" data-toggle="modal" id="botaoDetalhes" data-target="#modalDetalhes" />*@
+
+                    <button class="btn btn-default btnDetails" id="botaoDetalhes" data-value="@item.IdCliente">
+                        DETALHES
+                    </button>
+
+                        @Html.ActionLink("ALTERAR", "Editar", new { IDClie = item.IdCliente }, new { @class = "btn btn-default botaoAlterar tab" })
+
+                        @Html.ActionLink("EXCLUIR", "Delete", new { IDClie = item.IdCliente }, new { @class = "btn btn-default botaoDeletar tab" })
+
+                </td>
+            </tr>
+        }
+
+        @*@foreach (var item in Model)
+        {
+            <div class="modal fade" id="modalDetalhes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="FECHAR">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h3 class="modal-title" id="exampleModalLabel">
+                                <center>
+                                    <b> DETALHES DO CLIENTE </b>
+                                </center>
+                            </h3>
+                        </div>
+                        <div class="modal-body">
+                            <b>@Html.DisplayNameFor(model => model.Email)</b>
+                            <br />
+                            @Html.DisplayFor(modelItem => item.Email)
+                            <br />
+                            <hr />
+                            <b>@Html.DisplayNameFor(model => model.CPF)</b>
+                            <br />
+                            @Html.DisplayFor(modelItem => item.CPF)
+                            <br />
+                            <hr />
+                            <b>@Html.DisplayNameFor(model => model.RG)</b>
+                            <br />
+                            @Html.DisplayFor(modelItem => item.RG)
+                            <br />
+                            <hr />
+                            <b>@Html.DisplayNameFor(model => model.Telefone)</b>
+                            <br />
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                            <br />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">FECHAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }*@
+    </table>
+
+    <div>
+        <center>
+            <div class="col-md-offset-2 col-md-8">
+                <a href="~/Cliente/CadastroCliente">
+                    <input type="button" value="CADASTRAR CLIENTES" class="btn btn-info" />
+                </a>
+            </div>
+        </center>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDetalhes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="FECHAR">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title" id="exampleModalLabel">
+                    <center>
+                        <b> DETALHES DO CLIENTE </b>
+                    </center>
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div id="conteudoModal">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">FECHAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btnDetails").click(function () {
+                var id = $(this).data("value");
+                $("#conteudoModal").load("Cliente/Detalhes?IDClie=" + id, function () {
+                    $('#modalDetalhes').modal("show");
+                });
+            });
+        });
+    </script>
+    }

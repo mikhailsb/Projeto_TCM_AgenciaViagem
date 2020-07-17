@@ -78,5 +78,12 @@ namespace AgenciaViagem_TCM.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Detalhes(ushort IDClie)
+        {
+            ClienteDAO buscaId = new ClienteDAO();
+
+            return PartialView(buscaId.BuscaID(IDClie));
+        }
     }
 }

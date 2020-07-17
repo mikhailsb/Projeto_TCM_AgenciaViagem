@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-light navbar-fixed-top" style="background-color: rgba(144, 156, 248, 0.70);">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -20,27 +20,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Brand</a>
+                <a class="navbar-brand" href="~/Home/Principal">
+                    <img src="~/Imagens/logo_AgenciaViagens.png" id="imgHome" />
+                </a>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("CLIENTE", "Index", "Cliente")</li>
+                    <li class="active"><a href="~/Pacote">PACOTES <span class="sr-only">(current)</span></a></li>
+                    <li>@Html.ActionLink("FUNCIONÁRIO", "Index", "Funcionario")</li>
+                    <li><a href="#">AGENDA</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CADASTRO <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Cliente", "Index", "Cliente")@*<a href="#">Clientes</a>*@</li>
-                            <li>@Html.ActionLink("Pacote", "Index", "Pacote")@*<a href="#">Pacotes</a>*@</li>
+                            <li>@Html.ActionLink("CLIENTE", "CadastroCliente", "Cliente")@*<a href="#">Clientes</a>*@</li>
+                            <li>@Html.ActionLink("PACOTE", "CriarPacotes", "Pacote")@*<a href="#">Pacotes</a>*@</li>
                             <li role="separator" class="divider"></li>
-                            <li>@Html.ActionLink("Funcionário","Index","Funcionario")@*<a href="#">Funcionário</a>*@</li>
+                            <li>@Html.ActionLink("FUNCIONÁRIO", "CadastrarFunc", "Funcionario")@*<a href="#">Funcionário</a>*@</li>
                         </ul>
                     </li>
-                    <li class="active"><a href="#">Pacotes <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Agenda</a></li>
+
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
-
+                    <li>
+                        <a href="~/Home/Login" class="glyphicon glyphicon-log-in">
+                            LOGIN
+                        </a>
+                    </li>
                 </ul>
 
 
@@ -51,16 +60,53 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
-        </footer>
     </div>
 
-    <div>
-        <div class="fa fa-facebook-square" style="font-size:48px;color:blue"></div> Facebook
-        <br />
-        <div class="fa fa-linkedin-square" style="font-size:48px;color:blue"></div> Instagran
-    </div>
+    <footer class="page-footer font-small blue pt-4" style="background-color: rgba(144, 156, 248, 0.70);">
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid column -->
+
+            <div class="col-md-12">
+                <center>
+                    <h3 class="text-uppercase col-md-12"><b> REDES SOCIAIS </b></h3>
+
+                    <ul class="list-unstyled col-md-12">
+                        <li id="imagensRodape" class="fa fa-facebook-square">
+                            <a href="#!"><h5> FACEBOOK </h5></a>
+                        </li>
+                        <br />
+                        <li id="imagensRodape" class="fa fa-linkedin-square">
+                            <a href="#!"><h5> LINKEDIN </h5></a>
+                        </li>
+                    </ul>
+                </center>
+            </div>
+
+            <!-- Grid column -->
+            <!-- Grid column -->
+            @*<div class="col-md-3 mb-md-0 mb-3">
+
+                     Links
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>*@
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

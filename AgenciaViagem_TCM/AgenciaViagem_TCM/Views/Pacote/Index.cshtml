@@ -1,88 +1,143 @@
 ﻿@model IEnumerable<AppClasses.Pacote>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "LISTAGEM DE PACOTES";
     Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
-
-<h2>Pacotes</h2>
-
-@Html.ActionLink("Cadastrar", "CriarPacotes", "Pacote")
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdPacote)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataCheckin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataCheckout)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Origem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Destino)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoTransporte)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorUnitario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescricaoPacote)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ResumoPacote)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoteiroViagem)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div id="divTelaCheia">
+    <center>
+        <h2><b> PACOTES </b></h2>
+        <hr />
+    </center>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPacote)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCheckin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCheckout)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Origem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destino)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoTransporte)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorUnitario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoPacote)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResumoPacote)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoteiroViagem)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPacote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCheckin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCheckout)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Origem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destino)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.TipoTransporte)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorUnitario)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.DescricaoPacote)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResumoPacote)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoteiroViagem)
+                </th>*@
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPacote).
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCheckin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCheckout)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Origem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destino)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.TipoTransporte)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorUnitario)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DescricaoPacote, new {maxlength = "30" } )
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResumoPacote, new { htmlAttributes = new { @maxlength = "30" } })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoteiroViagem, new { htmlAttributes = new { @maxlength = "30" } })
+                    </td>)*@
+                <td>
+                    <button class="btn btn-default btnDetails" id="botaoDetalhes" data-value="@item.IdPacote">
+                        DETALHES
+                    </button>
+
+                        @Html.ActionLink("ALTERAR", "Editar", new { IDPacote = item.IdPacote }, new { @class = "btn btn-default botaoAlterar tab" })
+
+                        @Html.ActionLink("EXCLUIR", "Delete", new { IDPacote = item.IdPacote }, new { @class = "btn btn-default botaoDeletar tab" })
+
+
+                </td>
+            </tr>
+
+        }
+
+    </table>
+    <div>
+        <center>
+            <div class="col-md-offset-2 col-md-8">
+                <a href="~/Pacote/CriarPacotes">
+                    <input type="button" value="CADASTRAR PACOTES" class="btn btn-info" />
+                </a>
+            </div>
+        </center>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDetalhes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="FECHAR">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title" id="exampleModalLabel">
+                    <center>
+                        <b> DETALHES DO PACOTE   </b>
+                    </center>
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div id="conteudoModal">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">FECHAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btnDetails").click(function () {
+                var id = $(this).data("value");
+                $("#conteudoModal").load("Pacote/Detalhes?IDPacote=" + id, function () {
+                    $('#modalDetalhes').modal("show");
+                });
+            });
+        });
+    </script>
+}
