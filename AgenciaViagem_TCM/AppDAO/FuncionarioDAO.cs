@@ -12,6 +12,8 @@ namespace AppDAO
     public class FuncionarioDAO
     {
         private Banco DB;
+        public bool T = false;
+        public String mensagem = "";
 
         public void Inserir(Funcionario Func)
         {
@@ -99,5 +101,29 @@ namespace AppDAO
             }
             return vlLogin;
         }
+
+        public bool verificarLogin(String usuario, String senha)
+        {
+            MySqlDataReader dr;
+            DB = new Banco();
+            string validacao = string.Format("select * from funcionario where login='{0}' and senha_func='{1}'", usuario, senha);
+
+            try
+            {
+                dr = DB.RetornaComando(validacao);
+
+                if (dr.HasRows)
+                {
+                    T = true;
+                }
+            }
+            catch (MySqlException)
+            {
+                mensagem = "ERRO COM BANCO DE DADOS!";
+            }
+
+            return T;
+        }
     }
 }
+

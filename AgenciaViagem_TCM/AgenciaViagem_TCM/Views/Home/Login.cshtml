@@ -1,4 +1,5 @@
-﻿
+﻿@model AgenciaViagem_TCM.Models.Login
+
 @{
     ViewBag.Title = "Login";
 }
@@ -13,14 +14,16 @@
                 <img src="~/Imagens/logo_AgenciaViagens.png" />
             </div>
         </div>
-        <form name="frmusuario" method="post">
+        @using (Html.BeginForm("ValidarLogin", "Home", null, FormMethod.Post))
+        {
+
             <div class="row">
                 <div>
                     <br />
                     <p class="glyphicon glyphicon-user"> USUÁRIO</p>
                 </div>
                 <div class="col-4">
-                    <input type="text" value="" name="Login" />
+                    @Html.TextBoxFor(model => Model.Usuario, new { Class = "glyphicon glyphicon-user" })
                 </div>
             </div>
 
@@ -30,15 +33,29 @@
                     <p class="glyphicon glyphicon-lock"> SENHA</p>
                 </div>
                 <div class="col-4">
-                    <input type="text" value="" name="Senha" />
+                    @Html.PasswordFor(model => Model.Senha, new { Class = "glyphicon glyphicon-user" })
                 </div>
             </div>
             <br />
             <div class="row">
                 <div class="glyphicon glyphicon-log-in alert-info col-4">
+
                     <input type="submit" value="ENTRAR" id="botaoEntrar" />
                 </div>
             </div>
-        </form>
+
+        }
     </div>
 </center>
+
+
+<script type="text/javascript">
+
+    var teste = document.URL.toString().indexOf("false")
+    
+    if (teste != -1)
+    {
+        window.alert("Login ou senha incorreto.");
+    }
+
+</script>
