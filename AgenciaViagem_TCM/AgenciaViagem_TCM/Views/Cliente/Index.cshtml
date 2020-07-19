@@ -35,11 +35,11 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td>                    
                     @Html.DisplayFor(modelItem => item.IdCliente)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NomeCliente)
+                    @Html.ActionLink(item.NomeCliente, "DetalhesCliente", new { IDClie = item.IdCliente },null)
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Email)
@@ -131,10 +131,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="FECHAR">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3 class="modal-title" id="exampleModalLabel">
-                    <center>
+                <h3 class="modal-title text-center" id="exampleModalLabel">
                         <b> DETALHES DO CLIENTE </b>
-                    </center>
                 </h3>
             </div>
             <div class="modal-body">

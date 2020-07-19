@@ -8,6 +8,7 @@ namespace AppClasses
     public class Endereco
     {
         public ushort IdEndereco { get; set; }
+        public ushort IdCliente { get; set; }
         public string CEP { get; set; }
         public string Rua { get; set; }
         public ushort NumeroEnd { get; set; }

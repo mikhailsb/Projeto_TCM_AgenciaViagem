@@ -1,0 +1,88 @@
+﻿@model IEnumerable<AppClasses.Endereco>
+
+
+@{
+    ViewBag.Title = "DetalhesCliente";
+    Layout = "~/Views/Shared/_LayoutLogado.cshtml";
+}
+
+<h2>Detalhes do Cliente @ViewData["NomeCliente"]</h2>
+<hr />
+<p>Código do cliente: @ViewData["IdCliente"]</p>
+<p>Nome: @ViewData["NomeCliente"]</p>
+<p>E-mail: @ViewData["Email"]</p>
+<p>CPF @ViewData["CPF"]</p>
+<p>RG: @ViewData["RG"]</p>
+<p>Telefone: @ViewData["Telefone"]</p>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEndereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UF)
+        </th>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEndereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UF)
+            </td>
+
+            <td>
+                @* <input type="button" value="DETALHES" class="btn btn-default" data-toggle="modal" id="botaoDetalhes" data-target="#modalDetalhes" />*@
+
+                <button class="btn btn-default btnDetails" id="botaoDetalhes" data-value="@item.IdEndereco">
+                    DETALHES
+                </button>
+
+                @Html.ActionLink("ALTERAR", "EditarEndereco", new { IDEnde = item.IdEndereco }, new { @class = "btn btn-default botaoAlterar tab" })
+
+                @Html.ActionLink("EXCLUIR", "RemoverEndereco", new { IDEnde = item.IdEndereco }, new { @class = "btn btn-default botaoDeletar tab" })
+
+            </td>
+        </tr>
+    }
+    </table>
+<hr />
+<div>
+    <center>
+        @Html.HiddenFor(item => ViewData["IdCliente"])
+            @Html.ActionLink("Cadastrar Endereço","CadastrarEndereco", new { IDClie = ViewData["IdCliente"] }, new { @class = "col-md-offset-2 btn btn-info tab" })
+    </center>
+</div>

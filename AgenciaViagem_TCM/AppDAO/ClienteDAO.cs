@@ -68,16 +68,16 @@ namespace AppDAO
             return usuarios;
         }
 
-        public void CadastrarEndereco(Endereco endereco, Cliente cliente)
+        public void CadastrarEndereco(Endereco endereco)
         {
-            string Inserir = string.Format("INSERT INTO endereco (id_cliente, cep, rua, num, bairro, cidade, uf) VALUE ({0},'{1}','{2}','{3}','{4}','{5}','{6}');", cliente.IdCliente, endereco.CEP, endereco.Rua, endereco.NumeroEnd, endereco.Bairro, endereco.Cidade, endereco.UF);
+            string Inserir = string.Format("INSERT INTO endereco (id_cliente, cep, rua, num, bairro, cidade, uf) VALUE ({0},'{1}','{2}','{3}','{4}','{5}','{6}');", endereco.IdCliente, endereco.CEP, endereco.Rua, endereco.NumeroEnd, endereco.Bairro, endereco.Cidade, endereco.UF);
             // INSERT INTO endereco (id_cliente, cep, rua, num, bairro, cidade, uf) VALUE ({0},'{1}','{2}','{3}','{4}','{5}','{6}');
 
             DB = new Banco();
 
             DB.ExecutaComando(Inserir);
         }
-        public void AlterarEndereco(Endereco endereco, Cliente cliente)
+        public void AlterarEndereco(Endereco endereco)
         {
             string Alterar = string.Format("UPDATE endereco set cep = '{0}', rua = '{1}', num = '{2}', bairro = '{3}', cidade = '{4}', uf = '{5}' Where id_endereco = '{6}';", endereco.CEP, endereco.Rua, endereco.NumeroEnd, endereco.Bairro, endereco.Cidade, endereco.UF, endereco.IdEndereco);
 
@@ -86,15 +86,23 @@ namespace AppDAO
             DB.ExecutaComando(Alterar);
         }
 
-        public void RemoverEndereco(Endereco endereco, Cliente cliente)
+        public void RemoverEndereco(ushort IDEnde)
         {
-            string Remover = string.Format("DELETE FROM endereco WHERE id_endereco = '{0}' AND id_cliente = '{1}';", endereco.IdEndereco, cliente.IdCliente);
+            string Remover = string.Format("DELETE FROM endereco WHERE id_endereco = '{0}';", IDEnde);
 
             DB = new Banco();
 
             DB.ExecutaComando(Remover);
         }
+        public Endereco BuscaEndereco(ushort ID)
+        {
+            string busca = string.Format("SELECT * FROM endereco WHERE id_endereco = '{0}';", ID);
+            DB = new Banco();
 
+            var x = ListaDeEndececoDecluente(DB.RetornaComando(busca));
+
+            return x[0];
+        }
         public List<Endereco> ListarEndereco(Cliente cliente)
         {
             var db = new Banco();
@@ -103,7 +111,6 @@ namespace AppDAO
 
             return ListaDeEndececoDecluente(retorno);
         }
-
         private List<Endereco> ListaDeEndececoDecluente(MySqlDataReader retorno)
         {
             var enderecos = new List<Endereco>();

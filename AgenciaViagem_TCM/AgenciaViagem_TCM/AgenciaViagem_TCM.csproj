@@ -193,12 +193,14 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Mascaras\jquery.mask.js" />
-    <Content Include="Scripts\Mascaras\Mascaras.js" />
+    <Content Include="Scripts\Mascaras.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -229,6 +231,10 @@
     <Content Include="Views\Pacote\Delete.cshtml" />
     <Content Include="Views\Cliente\Detalhes.cshtml" />
     <Content Include="Views\Pacote\Detalhes.cshtml" />
+    <Content Include="Views\Cliente\DetalhesCliente.cshtml" />
+    <Content Include="Views\Cliente\CadastrarEndereco.cshtml" />
+    <Content Include="Views\Cliente\RemoverEndereco.cshtml" />
+    <Content Include="Views\Cliente\EditarEndereco.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

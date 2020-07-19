@@ -85,5 +85,70 @@ namespace AgenciaViagem_TCM.Controllers
 
             return PartialView(buscaId.BuscaID(IDClie));
         }
+        public ActionResult DetalhesCliente(ushort IDClie)
+        {
+            Cliente cliente = new Cliente();
+            cliente.IdCliente = IDClie;
+            ClienteDAO ClieEndereco = new ClienteDAO();
+            cliente = ClieEndereco.BuscaID(IDClie);
+
+            var cliend = ClieEndereco.ListarEndereco(cliente);
+
+            ViewData["IdCliente"] = cliente.IdCliente;
+            ViewData["NomeCliente"] = cliente.NomeCliente;
+            ViewData["Email"] = cliente.Email;
+            ViewData["CPF"] = cliente.CPF;
+            ViewData["RG"] = cliente.RG;
+            ViewData["Telefone"] = cliente.Telefone;
+
+            return View(cliend);
+        }
+
+        public ActionResult CadastrarEndereco(ushort IDClie)
+        {
+            Endereco endereco = new Endereco();
+            endereco.IdCliente = IDClie;
+            return View(endereco);
+        }
+        [HttpPost]
+        public ActionResult CadastrarEndereco(Cliente cliente, Endereco endereco)
+        {
+            ClienteDAO CadastrarEndereco = new ClienteDAO();
+
+            CadastrarEndereco.CadastrarEndereco(endereco);
+
+            return RedirectToAction("DetalhesCliente", new { IDClie = endereco.IdCliente });
+        }
+
+        public ActionResult RemoverEndereco(ushort IDEnde)
+        {
+            ClienteDAO BuscarEndereco = new ClienteDAO();
+            return View(BuscarEndereco.BuscaEndereco(IDEnde));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoverEndereco(Endereco endereco)
+        {
+            ClienteDAO RemoveEnde = new ClienteDAO();
+            RemoveEnde.RemoverEndereco(endereco.IdEndereco);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult EditarEndereco(ushort IDEnde)
+        {
+            ClienteDAO BuscarEndereco = new ClienteDAO();
+            return View(BuscarEndereco.BuscaEndereco(IDEnde));
+        }
+        [HttpPost]
+        public ActionResult EditarEndereco(Endereco endereco)
+        {
+            ClienteDAO AtualizarEndereco = new ClienteDAO();
+
+            AtualizarEndereco.AlterarEndereco(endereco);
+
+            return RedirectToAction("Index");
+        }
     }
 }
